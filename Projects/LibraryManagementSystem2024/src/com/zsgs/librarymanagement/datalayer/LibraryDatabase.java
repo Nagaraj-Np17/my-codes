@@ -64,6 +64,17 @@ private List<User> userList = new ArrayList();
 		return userList;		
 		
 	}
+	public String removeBookById(int id) {
+		String removeBook ="";
+		for(Book book:bookList) {
+			if(book.getId()==id) {
+				removeBook+=book.getName();
+				bookList.remove(book);
+				break;
+			}
+		}
+		return removeBook;
+	}
 
 	
 	

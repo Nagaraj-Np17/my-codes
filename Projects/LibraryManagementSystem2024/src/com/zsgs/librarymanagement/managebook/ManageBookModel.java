@@ -50,6 +50,16 @@ public class ManageBookModel {
 			
 			
 		}
+		public void removeBook(int id) {
+			String removeBook=LibraryDatabase.getInstance().removeBookById(id);
+			if(removeBook.length()!=0) {
+				manageBookView.showAlert("Book "+removeBook+" is Removed Succesful");
+			}else {
+				manageBookView.showAlert("Invalid Id");
+			}
+			
+			}
+			
 		
 		
 }

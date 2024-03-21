@@ -3,12 +3,14 @@ package com.zsgs.librarymanagement.librarysetup;
 import java.util.Scanner;
 
 import com.zsgs.librarymanagement.LibraryManagement2024;
+import com.zsgs.librarymanagement.homepage.HomePage;
 import com.zsgs.librarymanagement.login.LoginView;
 import com.zsgs.librarymanagement.managebook.ManageBookView;
 import com.zsgs.librarymanagement.model.Library;
 import com.zsgs.librarymanagement.user.UserView;
 
 public class LibrarySetupView {
+	Scanner sc = new Scanner(System.in);
 	private LibrarySetupModel librarySetupModel;
 
 	public LibrarySetupView() {
@@ -20,42 +22,16 @@ public class LibrarySetupView {
 	}
 
 	public void onSetupComplete(Library  library) {
-		System.out.println("\nLibrary setup already completed");
-		System.out.println("\nLibrary setup completed\n");
-		System.out.println("\nCurrent Library Name - " + library.getLibraryName());
-		System.out.println("\nCurrent Library Id - " + library.getLibraryId());
-		Scanner scanner = new Scanner(System.in);
-		while (true) {
-			System.out.println(
-					"\n 1. Add Book\n 2. View Book\n 3. View Specfic Book  \\n 4. Add User \\n 5. GetUser\n 9. Logout \n 0. Exit \n Enter your Choice:");
-			int choice = scanner.nextInt();
-			switch (choice) {
-			case 1:
-				new ManageBookView().initAdd();
-				break;
-			case 2:
-				new ManageBookView().viewBook();
-				break;
-			case 3:				
-				new ManageBookView().fetchBooks();
-				break;
-			case 4:
-				new UserView().init();
-				break;
-			case 5:
-				new UserView().getAllUser();
-				break;
-			case 6:
-				System.out.println("\n-- You are logged out successfully -- \n\n");
-				new LoginView().init();
-				return; 
-			case 0:
-				System.out.println("\n-- Thanks for using " + LibraryManagement2024.getInstance().getAppName() + "---");
-				return;
-			default:
-				System.out.println("\nPlease Enter valid choice\n");
-			}
-			}
+		System.err.println("\nLibrary setup completed\n");
+		System.err.println("\n|------ Library Details ------|\n");
+		System.out.println("\nLibrary Name      =" + library.getLibraryName());
+		System.out.println("\nLibrary Id        =" + library.getLibraryId());
+		System.out.println("\nLibrary Email     =" + library.getEmailId());
+		System.out.println("\nLibrary PhoneNo   =" + library.getPhoneNo());
+		System.out.println("\nLibrary Address   =" + library.getAddress());
+		System.out.println("");
+		HomePage homePage=new HomePage();
+		homePage.init();
 		
 	}
 

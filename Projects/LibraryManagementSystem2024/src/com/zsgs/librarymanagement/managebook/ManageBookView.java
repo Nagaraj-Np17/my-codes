@@ -114,6 +114,13 @@ Scanner sc = new Scanner(System.in);
 		
 	}
 
+	public void removeBook() {
+		System.out.println("Enter The Id:");
+		int id=sc.nextInt();
+		manageBookModel.removeBook(id);
+		
+		
+	}
 	public void showAlert(String string) {
 		System.out.println(string);
 		
