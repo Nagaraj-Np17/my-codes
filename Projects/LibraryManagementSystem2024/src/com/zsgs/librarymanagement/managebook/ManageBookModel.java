@@ -21,24 +21,19 @@ public class ManageBookModel {
 		
 	}
 		public List<Book> getAllBooks () {
-			List<Book>  bookInfo=LibraryDatabase.getInstance().getAllBooks();	
-			return bookInfo;
+			return LibraryDatabase.getInstance().getAllBooksData();	
 		}
 		public void updateBookCount(int id, int count) {
-			List<Book> bookInfo=LibraryDatabase.getInstance().getAllBooks();
-			
-			for(Book book:bookInfo) {
-				if(book.getId()==(id)) {
-					book.setAvailableCount(book.getAvailableCount()+count);
-					
+				if(LibraryDatabase.getInstance().bookUpdate(id, count)) {
+					manageBookView.showAlert("Book Update Successfully");
 				}else {
-					manageBookView.showAlert("Invalid Id");
+					manageBookView.showAlert("There Is No Book In This "+id);
 				}
-			}
 			
+						
 		}
 		public List<Book> getSearchBooks(String name) {
-			List<Book>  bookInfo=LibraryDatabase.getInstance().getAllBooks();
+			List<Book>  bookInfo=LibraryDatabase.getInstance().getAllBooksData();
 			List<Book> fetchBooksByName=new ArrayList<>();
 			for(Book book:bookInfo) {
 				if(book.getName().contains(name)) {
@@ -59,7 +54,19 @@ public class ManageBookModel {
 			}
 			
 			}
+		public void getBookById(int id) {
+			List<Book> bookInfo=LibraryDatabase.getInstance().getAllBooksData();
+			for(Book book:bookInfo) {
+				if(book.getId()==id) {
+					manageBookView.showAlert( book);
+				
+			}
+		if(bookInfo==null || bookInfo.size()==0) {
+			manageBookView.showAlert("There Is No Book Avalible In This id ="+id);	
+		}
 			
-		
+		}
+	
+		}
 		
 }

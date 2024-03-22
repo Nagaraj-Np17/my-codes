@@ -2,17 +2,28 @@ package com.zsgs.librarymanagement.model;
 
 public class User {
 	private int id;
+	private static int idCount;
 	private String name;
 	private String emailId;
 	private String phoneNo;
 	private String address;
-	private int due=10;
+	private static int due=10;
 	
+	
+	
+//	public User(String name, String emailId, String phoneNo, String address) {
+//		this.id = ++idCount;
+//		this.name = name;
+//		this.emailId = emailId;
+//		this.phoneNo = phoneNo;
+//		this.address = address;
+//	}
+	
+//	public void setId(int id) {
+//		this.id = ++idCount;
+//	}
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getName() {
 		return name;

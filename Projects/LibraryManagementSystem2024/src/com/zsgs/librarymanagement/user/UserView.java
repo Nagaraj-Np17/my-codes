@@ -25,6 +25,7 @@ public class UserView {
 		System.out.println("Enter The User Address");
 		user.setAddress(sc.next());		
 		userModel.addUser(user);
+		System.out.println();
 		
 	}
 
