@@ -3,36 +3,42 @@ package com.zsgs.librarymanagement.model;
 import java.util.Date;
 
 public class BookIssue {
-	//private static int issueCount=0;
-	//private int issueId;
-	private String bookId;
-	private String issueBookName;
+	private static int issueCount=1;
+	private int issueId;
+	private int bookId;
+	private int userId;
 	private Date issueDate;
-	public BookIssue(int issueId, String bookId, String issueBookName, Date issueDate, Date returnDate) {
+	private Date  returnDate;
+	public BookIssue( int bookId,int userId) {
 		super();
-		//this.issueId = issueId;
+		this.issueId = issueCount++;
 		this.bookId = bookId;
-		this.issueBookName = issueBookName;
-		this.issueDate = issueDate;
-		this.returnDate = returnDate;
+		this.issueDate = new Date();
+		this.returnDate = null;
 	}
-/*	public int getIssueId() {
-		//turn issueId;
+	public static int getIssueCount() {
+		return issueCount;
+	}
+	public static void setIssueCount(int issueCount) {
+		BookIssue.issueCount = issueCount;
+	}
+	public int getIssueId() {
+		return issueId;
 	}
 	public void setIssueId(int issueId) {
 		this.issueId = issueId;
-	}*/
-	public String getBookId() {
+	}
+	public int getBookId() {
 		return bookId;
 	}
-	public void setBookId(String bookId) {
+	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
-	public String getIssueBookName() {
-		return issueBookName;
+	public int getUserId() {
+		return userId;
 	}
-	public void setIssueBookName(String issueBookName) {
-		this.issueBookName = issueBookName;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public Date getIssueDate() {
 		return issueDate;
@@ -46,9 +52,14 @@ public class BookIssue {
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
-	private Date  returnDate;
+	@Override
+	public String toString() {
+		return "BookIssue [issueId=" + issueId + ", bookId=" + bookId + ", userId=" + userId + ", issueDate="
+				+ issueDate + ", returnDate=" + returnDate + "]";
+	}
 	
 	
+
 
 
 }

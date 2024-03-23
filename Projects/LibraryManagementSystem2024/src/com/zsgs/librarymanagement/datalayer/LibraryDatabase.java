@@ -1,6 +1,8 @@
 package com.zsgs.librarymanagement.datalayer;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import com.zsgs.librarymanagement.managebook.ManageBookView;
@@ -35,6 +37,13 @@ private List<BookIssue> issueList = new ArrayList();
 	public List<Book> getAllBooksData() {
 		return bookList;
 	}
+	public Book getAllBooksData(int bookId) {		
+		for(Book book:bookList) {
+			if(book.getId()==bookId) {
+				return  book;
+		}
+	}return null;
+	}
 //------------------------ Insert Book--------------------------------//
 	public boolean insertBook(Book book) {
 		boolean hasBook = false;
@@ -56,7 +65,7 @@ private List<BookIssue> issueList = new ArrayList();
 
 		for(Book book:bookList) {
 			if(book.getId()==id) {
-				book.setAvailableCount(book.getAvailableCount()+count);	
+				book.setAvailableCount(count);	
 				return true;
 			}
 		}
@@ -109,23 +118,88 @@ private List<BookIssue> issueList = new ArrayList();
 		return null;		
 	}
 	
-	public List<Book> getAllBooksData(int bookid) {
-		for(Book book:bookList) {
-			if(book.getId()==bookid) {
-				if(book.getAvailableCount()>0) {
-					return bookList;
+/*	public boolean issueValidation(int userId,int bookid) {
+	for(User user:userList) {
+		if(user.getId()==userId) {
+			for(Book book:bookList) {
+				if(book.getId()==bookid) {
+					if(book.getAvailableCount()>0) {
+						book.setAvailableCount(book.getAvailableCount()-1);
+						
+					}else {
+						return false;
+					}
 				}
 			}
+			return false;
 		}
-		return null;
 	}
+	return false;
+	}*/
 	public void addIssueData(BookIssue issueData ) {
-		 issueList.add(issueData);
+		issueList.add(issueData);
+		
 		return;
 		
 	}
+	public List<BookIssue> getAllIssuedData() {
+		return issueList;
+	}
+	public List<BookIssue>  getAllIssuedData(int userId) {
+		List<BookIssue> userIssue=new ArrayList<>();
+		for(BookIssue issue:issueList) {
+			if(issue.getUserId()==userId && issue.getReturnDate()==null) {
+				userIssue.add(issue);
+			}
+		}
+		return userIssue;
+	}
 	
+	public List<BookIssue>  getAllIssuedDataHistory(int userId) {
+		List<BookIssue> userIssue=new ArrayList<>();
+		for(BookIssue issue:issueList) {
+			if(issue.getUserId()==userId && issue.getReturnDate()!= null) {
+				userIssue.add(issue);
+			}
+		}
+		return userIssue;
+	}
 	
+	public void  getIssuedData(int issuseid) {
+		Iterator<BookIssue> iterator = issueList.listIterator();
+		
+		while(iterator.hasNext()) {
+			BookIssue cur = iterator.next();
+			if(cur.getIssueId()==issuseid)
+			{
+				cur.setReturnDate(new Date());
+				Book book = getAllBooksData(cur.getBookId());
+				bookUpdate(book.getId(), book.getAvailableCount()+1);
+				User user = getAllUserData(cur.getUserId());
+				userUpdate(user.getId(),user.getbookTaken()-1);
+			}
+		}
+	}
+	public void userUpdate(int id, int count) {
+		for(User user:userList) {
+			if(user.getId()==id) {
+				user.setbookTaken(count);
+				
+			}
+		}
+		
+	}
+	public String removeUserData(int userId) {
+			String removeUser ="";
+			for(User user:userList) {
+				if(user.getId()==userId) {
+					removeUser+=user.getName();
+					bookList.remove(user);
+					break;
+				}
+			}
+			return removeUser;
+	}
 	
 	
 	

@@ -18,9 +18,26 @@ private static UserView userView;
 		}
 		
 	}
-	public List<User> getAllUserInfo() {
+	public void getAllUserInfo() {
 		List<User>userList=LibraryDatabase.getInstance().getAllUserData();
-		return userList;
+		if(userList!=null) {
+			for(User user:userList) {
+				userView.showAlert(userList);
+			}
+				
+		}
+		else {
+			userView.showAlert("No user Data,Add User");
+		}
+	}
+	public void getRemoveUser(int userId) {
+		String removeUserName=LibraryDatabase.getInstance().removeUserData(userId);
+		if(removeUserName.length()>0) {
+			userView.showAlert("User "+removeUserName+" Removed SucessFully");
+		}
+		else {
+			userView.showAlert("User Not Found");
+		}
 	}
 	
 	

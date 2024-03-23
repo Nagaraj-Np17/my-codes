@@ -7,6 +7,9 @@ public class User {
 	private String emailId;
 	private String phoneNo;
 	private String address;
+	
+
+	private int bookTaken;
 	private static int due=10;
 	
 	
@@ -52,12 +55,19 @@ public class User {
 	public int getDue() {
 		return due;
 	}
+	public int getbookTaken() {
+		return bookTaken;
+	}
+	public void setbookTaken(int bookTaken) {
+		this.bookTaken = bookTaken;;
+	}
 	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", phoneNo=" + phoneNo + ", address="
 				+ address + ", due=" + due + "]";
 	}
+	
 	
 	
 	

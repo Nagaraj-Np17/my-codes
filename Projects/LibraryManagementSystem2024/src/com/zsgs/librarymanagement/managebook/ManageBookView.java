@@ -75,13 +75,11 @@ public class ManageBookView {
 			}		
 
 	}
-	public void viewBookByID() {
-		
+	public void viewBookByID() {		
 		System.out.println("Enter the Book Id");
 		int id=sc.nextInt();
 		manageBookModel.getBookById(id);
-			
-			}
+		}
 	
 
 	public void fetchBooks() {
@@ -122,4 +120,7 @@ public class ManageBookView {
 
 	}
 
+	
+
+	
 }

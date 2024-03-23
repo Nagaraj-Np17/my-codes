@@ -3,8 +3,7 @@ package com.zsgs.librarymanagement.homepage;
 import java.util.Scanner;
 
 import com.zsgs.librarymanagement.LibraryManagement2024;
-import com.zsgs.librarymanagement.issuebook.IssueBookModel;
-import com.zsgs.librarymanagement.issuebook.IssueBooks;
+import com.zsgs.librarymanagement.issuebook.IssueBookView;
 import com.zsgs.librarymanagement.login.LoginView;
 import com.zsgs.librarymanagement.managebook.ManageBookView;
 import com.zsgs.librarymanagement.user.UserView;
@@ -24,13 +23,16 @@ private static HomePage homePage;
 		while (true) {
 			System.out.println(
 				    "+----------------------------------+\n" +
-				    "|---------  Main Menu  ---------|\n" +
+				    "|---------  Main Menu  ------------|\n" +
 				    "|                                  |\n" +
 				    "| 1. Book Management               |\n" +
 				    "| 2. User Management               |\n" +
 				    "| 3. Logout                        |\n" +
 				    "| 4. Issue Book                    |\n" +
-				    "| 5. Book Return                   |\n" +
+				    "| 5. Issued Book                   |\n" +
+				    "| 6. Return Book                   |\n" +
+				    "| 7. Returned Book                 |\n" +
+				    "| 8. ViewUserIssuedBook            |\n" +
 				    "| 0. Exit                          |\n" +
 				    "| Enter your Choice:               |\n" +
 				    "+----------------------------------+"
@@ -39,23 +41,30 @@ private static HomePage homePage;
 			switch (choice) {
 			case 1:
 				bookManagement();
-				new ManageBookView().initAdd();
+				//new ManageBookView().initAdd();
 				break;
 			case 2:
-				new UserView().init();
+				userManagement() ;
 				break;
 			case 3:
 				new LoginView().init();
 				return; 
 			case 4:
-				new  IssueBooks ().init();
+				new  IssueBookView().init();
 				break; 
 			case 5:
-				new  IssueBooks ().viewIssueBook();
+				new  IssueBookView().viewIssuedBook();
+				break; 
+			case 6:
+				new  IssueBookView().returnBook();
+				break; 
+			case 7:
+				new  IssueBookView().viewUserIssuedBook();
 				break; 
 			case 0:
 				System.out.println("\n-- Thanks for using " + LibraryManagement2024.getInstance().getAppName() + "---");
-				return;
+				System.exit(0);
+				
 			default:
 				System.out.println("\nPlease Enter valid choice\n");
 				}
@@ -104,6 +113,27 @@ private static HomePage homePage;
 		
 	}
 	
-	
+	public void userManagement() {
+		while (true) {
+			System.err.println("\n|------User Management------|\n");
+			System.out.println
+			("\n1.Add User\n 2.View all User\n3.viewUserIssuedBook\n4.Remove User\nEnter The Your Choice:");
+			int choice=sc.nextInt();
+			switch (choice) {
+			case 1:
+				new UserView().init();
+				break;
+			case 2:
+				new UserView().viewUser();
+				break;
+			case 3:				
+				new  IssueBookView().viewUserIssuedBook();
+				break;
+			case 4:				
+				new UserView().removeUser();
+				break;
+			}
+		}
+	}
 	
 }

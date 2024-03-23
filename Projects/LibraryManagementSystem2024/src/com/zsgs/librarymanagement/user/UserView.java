@@ -3,6 +3,7 @@ package com.zsgs.librarymanagement.user;
 import java.util.List;
 import java.util.Scanner;
 
+import com.zsgs.librarymanagement.issuebook.IssueBookModel;
 import com.zsgs.librarymanagement.model.Book;
 import com.zsgs.librarymanagement.model.User;
 
@@ -48,17 +49,31 @@ public class UserView {
 		}
 	}
 	public void getAllUser() {
-		List<User> userlist=userModel.getAllUserInfo();
-		for(User user :userlist) {
-			System.out.println(user);
-		}
+		userModel.getAllUserInfo();
+		
 	}
 
 	public void onUserExits(User user) {
 			System.out.println("\n------- User '" + user.getName() + "' already exist -------\n");
-
-			
 		}
+
+	public void viewUser() {
+		
+		
+	}
+
+	public void showAlert(Object string) {
+	System.out.println(string);
+	}
+
+	public void removeUser() {
+		System.out.println("Enter The User Id");
+		int userId=sc.nextInt();
+		userModel.getRemoveUser(userId);
+		
+	}
+
+	
 		
 	}
 

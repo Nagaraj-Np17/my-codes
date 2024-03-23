@@ -24,7 +24,8 @@ public class ManageBookModel {
 			return LibraryDatabase.getInstance().getAllBooksData();	
 		}
 		public void updateBookCount(int id, int count) {
-				if(LibraryDatabase.getInstance().bookUpdate(id, count)) {
+				Book book = LibraryDatabase.getInstance().getAllBooksData(id);
+				if(LibraryDatabase.getInstance().bookUpdate(id, book.getAvailableCount()+count)) {
 					manageBookView.showAlert("Book Update Successfully");
 				}else {
 					manageBookView.showAlert("There Is No Book In This "+id);
@@ -55,17 +56,14 @@ public class ManageBookModel {
 			
 			}
 		public void getBookById(int id) {
-			List<Book> bookInfo=LibraryDatabase.getInstance().getAllBooksData();
-			for(Book book:bookInfo) {
-				if(book.getId()==id) {
-					manageBookView.showAlert( book);
-				
-			}
-		if(bookInfo==null || bookInfo.size()==0) {
-			manageBookView.showAlert("There Is No Book Avalible In This id ="+id);	
-		}
-			
-		}
+			Book book=LibraryDatabase.getInstance().getAllBooksData(id);
+				if(book!=null) {
+					manageBookView.showAlert(book);
+				}
+				else {
+					manageBookView.showAlert("Invalid Book Id");
+					manageBookView.viewBookByID();
+				}
 	
 		}
 		
