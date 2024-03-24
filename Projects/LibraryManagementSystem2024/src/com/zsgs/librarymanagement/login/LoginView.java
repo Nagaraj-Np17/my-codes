@@ -15,7 +15,7 @@ public class LoginView {
 	
 	public void init() {
 		
-		System.out.println("\n Please Login to proceed:");
+		System.err.println("\nPlease  Login to proceed:");
 		System.out.println("Enter The UserName");
 		String userName=sc.next();
 		System.out.println("Enter The Password");
@@ -39,6 +39,13 @@ public class LoginView {
 	LibrarySetupView librarySetupView = new LibrarySetupView();
 	librarySetupView.init();
 }
+
+
+	public String retryOfNot() {
+		System.out.println("Are You Want To Retry :Yes/No");
+		String result=sc.next();
+		return result;
+	}
 
 
 }

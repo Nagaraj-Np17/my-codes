@@ -58,7 +58,7 @@ public class UserView {
 		}
 
 	public void viewUser() {
-		
+		userModel.getAllUserInfo();
 		
 	}
 

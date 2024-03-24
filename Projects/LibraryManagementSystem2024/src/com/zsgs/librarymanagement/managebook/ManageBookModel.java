@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.zsgs.librarymanagement.datalayer.LibraryDatabase;
+import com.zsgs.librarymanagement.homepage.HomePage;
 import com.zsgs.librarymanagement.model.Book;
 
 public class ManageBookModel {
@@ -29,6 +30,7 @@ public class ManageBookModel {
 					manageBookView.showAlert("Book Update Successfully");
 				}else {
 					manageBookView.showAlert("There Is No Book In This "+id);
+					
 				}
 			
 						
@@ -52,6 +54,7 @@ public class ManageBookModel {
 				manageBookView.showAlert("Book "+removeBook+" is Removed Succesful");
 			}else {
 				manageBookView.showAlert("Invalid Id");
+				retryOrNotRemove();
 			}
 			
 			}
@@ -62,9 +65,32 @@ public class ManageBookModel {
 				}
 				else {
 					manageBookView.showAlert("Invalid Book Id");
-					manageBookView.viewBookByID();
+					retryOrNotId();
+					
 				}
 	
 		}
+		public  void retryOrNotId(){
+			if(manageBookView.retryOfNot().equalsIgnoreCase("yes")){
+				manageBookView.viewBookByID();
+			}else{
+				HomePage.getInstance().bookManagement();
+			} 
+		}
+		public  void retryOrNotName(){
+			if(manageBookView.retryOfNot().equalsIgnoreCase("yes")){
+				manageBookView.fetchBooks();
+			}else{
+				HomePage.getInstance().bookManagement();
+			} 
+		}
+		public  void retryOrNotRemove(){
+			if(manageBookView.retryOfNot().equalsIgnoreCase("yes")){
+				manageBookView.removeBook();
+			}else{
+				HomePage.getInstance().bookManagement();
+			} 
+		}
+			
+		}
 		
-}

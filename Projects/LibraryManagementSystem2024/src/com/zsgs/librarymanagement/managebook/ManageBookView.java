@@ -85,10 +85,11 @@ public class ManageBookView {
 	public void fetchBooks() {
 		System.out.println("Enter The Book Name:");
 		String name = sc.next();
+		manageBookModel.getSearchBooks(name);
 		List<Book> bookInfo = manageBookModel.getSearchBooks(name);
 		if (bookInfo.size() == 0) {
 			System.out.println("There Is No Book Available in " + name);
-			return;
+			manageBookModel.retryOrNotName();
 		}
 		for (Book book : bookInfo) {
 			if (book.getName().contains(name)) {
@@ -119,6 +120,13 @@ public class ManageBookView {
 		System.out.println(string);
 
 	}
+
+	public String retryOfNot() {
+		System.out.println("Are You Want To Retry :Yes/No");
+		String result=sc.next();
+		return result;
+	}
+
 
 	
 

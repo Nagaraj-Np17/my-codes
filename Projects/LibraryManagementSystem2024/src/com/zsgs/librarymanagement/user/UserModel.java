@@ -15,14 +15,14 @@ private static UserView userView;
 			userView.onUserAdded(user);
 		} else {
 			userView.onUserExits(user);
-		}
+	}
 		
 	}
 	public void getAllUserInfo() {
 		List<User>userList=LibraryDatabase.getInstance().getAllUserData();
 		if(userList!=null) {
 			for(User user:userList) {
-				userView.showAlert(userList);
+				userView.showAlert(user);
 			}
 				
 		}

@@ -1,11 +1,10 @@
 package com.zsgs.librarymanagement.datalayer;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import com.zsgs.librarymanagement.managebook.ManageBookView;
+//import com.zsgs.librarymanagement.managebook.ManageBookView;
 import com.zsgs.librarymanagement.model.Book;
 import com.zsgs.librarymanagement.model.BookIssue;
 import com.zsgs.librarymanagement.model.Library;
@@ -14,9 +13,9 @@ import com.zsgs.librarymanagement.model.User;
 public class LibraryDatabase {
 private static  LibraryDatabase  libraryDatabase;
 private Library library;
-private List<Book> bookList = new ArrayList();
-private List<User> userList = new ArrayList();
-private List<BookIssue> issueList = new ArrayList();
+private List<Book> bookList = new ArrayList<>();
+private List<User> userList = new ArrayList<>();
+private List<BookIssue> issueList = new ArrayList<>();
 	public static LibraryDatabase getInstance() {
 		if(libraryDatabase==null) {
 			libraryDatabase=new LibraryDatabase();

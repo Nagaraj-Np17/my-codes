@@ -1,7 +1,7 @@
 package com.zsgs.librarymanagement.librarysetup;
 
 import java.util.Scanner;
-
+import com.zsgs.librarymanagement.validator;
 import com.zsgs.librarymanagement.LibraryManagement2024;
 import com.zsgs.librarymanagement.homepage.HomePage;
 import com.zsgs.librarymanagement.login.LoginView;
@@ -45,10 +45,10 @@ public class LibrarySetupView {
 		System.out.println("\n\nEnter library details:");
 		System.out.println("\nEnter library name:");
 		library.setLibraryName(scanner.nextLine());
-		System.out.println("\nEnter library email:");
-		library.setEmailId(scanner.nextLine());
-		System.out.println("\nEnter The Phone no:");
-		library.setPhoneNo(scanner.nextLine());
+		System.out.println("\nEnter library PhoneNo:");
+		library.setPhoneNo(sc.next());
+		System.out.println("\nEnter library Email:");
+		library.setEmailId(sc.next());
 		System.out.println("\nEnter Library Address :");
 		library.setAddress(scanner.nextLine());
 		

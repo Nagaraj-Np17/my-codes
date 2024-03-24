@@ -21,7 +21,7 @@ private static HomePage homePage;
 	public void init() {
 		
 		while (true) {
-			System.out.println(
+			System.err.println(
 				    "+----------------------------------+\n" +
 				    "|---------  Main Menu  ------------|\n" +
 				    "|                                  |\n" +
@@ -34,9 +34,10 @@ private static HomePage homePage;
 				    "| 7. Returned Book                 |\n" +
 				    "| 8. ViewUserIssuedBook            |\n" +
 				    "| 0. Exit                          |\n" +
-				    "| Enter your Choice:               |\n" +
+				    "|					                |\n" +
 				    "+----------------------------------+"
 				);
+			System.out.println("Enter The Your Choice:");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -66,7 +67,8 @@ private static HomePage homePage;
 				System.exit(0);
 				
 			default:
-				System.out.println("\nPlease Enter valid choice\n");
+				System.out.println("\nInValid Choice");
+	
 				}
 			}	
 		
@@ -107,7 +109,8 @@ private static HomePage homePage;
 				new LoginView().init();
 				return; 
 			default:
-				System.out.println("\nPlease Enter valid choice\n");
+				System.err.println("\nPlease Enter valid choice\n");
+				//choice=sc.nextInt();
 				}
 		}
 		
@@ -117,7 +120,7 @@ private static HomePage homePage;
 		while (true) {
 			System.err.println("\n|------User Management------|\n");
 			System.out.println
-			("\n1.Add User\n 2.View all User\n3.viewUserIssuedBook\n4.Remove User\nEnter The Your Choice:");
+			("\n1.Add User\n 2.View all User\n3.viewUserIssuedBook\n4.Remove User\n5.Return To Main Menu\nEnter The Your Choice:");
 			int choice=sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -132,6 +135,10 @@ private static HomePage homePage;
 			case 4:				
 				new UserView().removeUser();
 				break;
+			case 5:
+				init();
+			default:{
+				System.out.println("Invalid Choice:");
 			}
 		}
 	}
