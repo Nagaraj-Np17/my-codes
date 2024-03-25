@@ -20,7 +20,6 @@ public class LoginView {
 		String userName=sc.next();
 		System.out.println("Enter The Password");
 		String password=sc.next();
-		//sc.close();
 		loginModel.validateUser(userName,password);		
 		
 	}

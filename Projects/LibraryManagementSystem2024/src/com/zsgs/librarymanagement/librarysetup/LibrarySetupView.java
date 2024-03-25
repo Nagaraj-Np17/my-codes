@@ -1,13 +1,14 @@
 package com.zsgs.librarymanagement.librarysetup;
 
 import java.util.Scanner;
-import com.zsgs.librarymanagement.validator;
+//import com.zsgs.librarymanagement.validator;
 import com.zsgs.librarymanagement.LibraryManagement2024;
 import com.zsgs.librarymanagement.homepage.HomePage;
 import com.zsgs.librarymanagement.login.LoginView;
 import com.zsgs.librarymanagement.managebook.ManageBookView;
 import com.zsgs.librarymanagement.model.Library;
 import com.zsgs.librarymanagement.user.UserView;
+import com.zsgs.librarymanagement.validator.Validator;
 
 public class LibrarySetupView {
 	Scanner sc = new Scanner(System.in);
@@ -40,17 +41,35 @@ public class LibrarySetupView {
 	}
 
 	public void initiateSetup() {
-		Scanner scanner = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		Library library = new Library();
-		System.out.println("\n\nEnter library details:");
-		System.out.println("\nEnter library name:");
-		library.setLibraryName(scanner.nextLine());
-		System.out.println("\nEnter library PhoneNo:");
-		library.setPhoneNo(sc.next());
-		System.out.println("\nEnter library Email:");
-		library.setEmailId(sc.next());
+		String name;
+		
+		System.out.println("\nEnter library details:");
+		do {
+			System.out.println("\nEnter library name:");
+			name = sc.nextLine();
+		}while(!Validator.validateName(name));
+		library.setLibraryName(name);
+		String phoneNo;
+		do {
+		System.out.println("\nEnter valid PhoneNo:");
+		phoneNo=sc.next();
+		}while(!Validator.validatePhoneNo(phoneNo));
+		
+		library.setPhoneNo(phoneNo);
+		String mail;
+		do {
+			System.out.println("\nEnter valid library Email:");;
+			mail=sc.next();
+			}while(!Validator.validateEmail(mail));
+		
+		library.setEmailId(mail);
+
+		sc.nextLine();
+
 		System.out.println("\nEnter Library Address :");
-		library.setAddress(scanner.nextLine());
+		library.setAddress(sc.nextLine());
 		
 		librarySetupModel.createLibrary(library);
 	}

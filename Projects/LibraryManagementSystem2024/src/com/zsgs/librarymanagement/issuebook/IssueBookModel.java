@@ -3,6 +3,7 @@ package com.zsgs.librarymanagement.issuebook;
 import java.util.List;
 
 import com.zsgs.librarymanagement.datalayer.LibraryDatabase;
+import com.zsgs.librarymanagement.homepage.HomePage;
 import com.zsgs.librarymanagement.managebook.ManageBookModel;
 import com.zsgs.librarymanagement.model.Book;
 import com.zsgs.librarymanagement.model.BookIssue;
@@ -33,9 +34,16 @@ public class IssueBookModel {
 	}
 	
 
-	public List<BookIssue> viewIssuedBookInfo() {
+	public void viewIssuedBookInfo() {
 		List<BookIssue> issueData=LibraryDatabase.getInstance().getAllIssuedData();
-		return issueData;
+		if(issueData!=null) {
+			for(BookIssue bookIssue:issueData) {
+				issueBookView.showAlert(bookIssue);
+			}		
+		}else {
+			issueBookView.showAlert("IssuedBook List Is Empty");
+			
+		}
 		
 	}
 
@@ -52,14 +60,15 @@ public class IssueBookModel {
 			}else {
 				issueBookView.showAlert("Book Not Avalible Try Another Book:");
 				issueBookView.init();
+				
 			}
 		}else {
 			issueBookView.showAlert("Invalid Book Id");
-			issueBookView.init();
+			retryOrNotId();
 		}
 	}else {
 		issueBookView.showAlert("Invalid User");
-		issueBookView.init();
+		retryOrNotId();
 	}
 		
 	}
@@ -67,12 +76,13 @@ public class IssueBookModel {
 	
 	public void viewUserIssuedBook(int userId) {
 		List<BookIssue> viewIssuedBook=LibraryDatabase.getInstance().getAllIssuedData(userId);
-		if(viewIssuedBook!=null) {
+		if(viewIssuedBook.size()>0) {
 			for(BookIssue bookIssue:viewIssuedBook) {
 				issueBookView.showAlert(bookIssue);
 			}		
 		}else {
 			issueBookView.showAlert("User Doesn't Take Any Book");
+			
 		}
 	}
 
@@ -81,7 +91,13 @@ public class IssueBookModel {
 		int issueId=issueBookView.getIssueId();
 		LibraryDatabase.getInstance().getIssuedData(issueId);
 	}
-
+	public  void retryOrNotId(){
+		if(issueBookView.retryOfNot().equalsIgnoreCase("yes")){
+			issueBookView.init();
+		}else{
+			HomePage.getInstance().bookManagement();
+		} 
+	}
 	
 
 }

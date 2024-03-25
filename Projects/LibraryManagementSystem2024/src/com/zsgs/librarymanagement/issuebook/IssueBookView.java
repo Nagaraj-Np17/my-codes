@@ -25,21 +25,15 @@ public class IssueBookView {
 
 	}
 	public void viewIssuedBook() {
-		List<BookIssue>issueBookData=issueBookModel.viewIssuedBookInfo();
-		System.out.println( issueBookData);
+		issueBookModel.viewIssuedBookInfo();
 	}
 	public void showAlert(Object string) {
 		System.out.println(string);
 		
 	}
 	public void returnBook() {
-		User user=new User();
 		System.out.println("Enter The UserId");
 		int userId=sc.nextInt();
-		
-//		System.out.println("Enter The BookId");
-//		int bookId=sc.nextInt();
-		
 		issueBookModel.returnIsseBook(userId);
 		
 	}
@@ -56,6 +50,11 @@ public class IssueBookView {
 		
 	}
 	
+	public String retryOfNot() {
+		System.out.println("Are You Want To Continue :Yes/No");
+		String result=sc.next();
+		return result;
+	}
 	
 	
 }

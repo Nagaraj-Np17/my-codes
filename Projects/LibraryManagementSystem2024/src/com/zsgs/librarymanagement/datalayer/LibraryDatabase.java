@@ -4,11 +4,13 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import com.google.gson.reflect.TypeToken;
 //import com.zsgs.librarymanagement.managebook.ManageBookView;
 import com.zsgs.librarymanagement.model.Book;
 import com.zsgs.librarymanagement.model.BookIssue;
 import com.zsgs.librarymanagement.model.Library;
 import com.zsgs.librarymanagement.model.User;
+import com.zsgs.librarymanagement.serialize.JsonSerialize;
 
 public class LibraryDatabase {
 private static  LibraryDatabase  libraryDatabase;
@@ -56,6 +58,7 @@ private List<BookIssue> issueList = new ArrayList<>();
 			return false;
 		} else {
 			bookList.add(book);
+			serializeBookList();
 			return true;
 		}
 	}
@@ -97,7 +100,8 @@ private List<BookIssue> issueList = new ArrayList<>();
 		if (hasUser) {
 			return false;
 		} else {
-			userList.add(user);  
+			userList.add(user);
+			serializeUserList();
 			return true;
 		}
 	}
@@ -117,27 +121,9 @@ private List<BookIssue> issueList = new ArrayList<>();
 		return null;		
 	}
 	
-/*	public boolean issueValidation(int userId,int bookid) {
-	for(User user:userList) {
-		if(user.getId()==userId) {
-			for(Book book:bookList) {
-				if(book.getId()==bookid) {
-					if(book.getAvailableCount()>0) {
-						book.setAvailableCount(book.getAvailableCount()-1);
-						
-					}else {
-						return false;
-					}
-				}
-			}
-			return false;
-		}
-	}
-	return false;
-	}*/
 	public void addIssueData(BookIssue issueData ) {
 		issueList.add(issueData);
-		
+		serializeIssueList();
 		return;
 		
 	}
@@ -199,7 +185,38 @@ private List<BookIssue> issueList = new ArrayList<>();
 			}
 			return removeUser;
 	}
+	//--------------------------------------------------------------------------------------//
 	
-	
-	
+	 public void serializeBookList() {
+	        JsonSerialize.getJsonSerialize().serialize(bookList,"src/com/zsgs/librarymanagement/data/bookList.json");
+	        System.out.println("Booklist Serialized");
+	    }
+	 public void serializeUserList() {
+	        JsonSerialize.getJsonSerialize().serialize(userList,"src/com/zsgs/librarymanagement/data/userList.json");
+	        System.out.println("Userlist Serialized");
+	 }
+	 public void serializeIssueList() {
+	        JsonSerialize.getJsonSerialize().serialize(issueList,"src/com/zsgs/librarymanagement/data/issueList.json");
+	        System.out.println("IssueList Serialized");
+	 }
+	 
+	 public void deserializeBookList()
+	 {
+		 List<Book> booklist = JsonSerialize.getJsonSerialize().deserialize("src/com/zsgs/librarymanagement/data/bookList.json", new TypeToken<List<Book>>() {});
+		 this.bookList = booklist;
+	 }
+	 public void deserializeUserList()
+	 {
+		 List<User> userList = JsonSerialize.getJsonSerialize().deserialize("src/com/zsgs/librarymanagement/data/userList.json", new TypeToken<List<User>>() {});
+		 this.userList = userList;
+	 }
+	 public void deserializeIssueList()
+	 {
+		 List<BookIssue> issueList = JsonSerialize.getJsonSerialize().deserialize("src/com/zsgs/librarymanagement/data/issueList.json", new TypeToken<List<BookIssue>>() {});
+		 this.issueList = issueList;
+	 }
+	 
+	 public void getFromDB() {
+		 deserializeBookList();deserializeUserList();deserializeIssueList();
+	 }
 }

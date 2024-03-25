@@ -20,8 +20,7 @@ public class ManageBookView {
 
 		System.out.println("Enter the Book Name:");
 		book.setName(sc.next());
-		System.out.println("Enter The Book Id");
-		book.setId(sc.nextInt());
+		book.setId();
 		System.out.println("Enter the Book Author:");
 		book.setAuthor(sc.next());
 		System.out.println("Enter the publication:");

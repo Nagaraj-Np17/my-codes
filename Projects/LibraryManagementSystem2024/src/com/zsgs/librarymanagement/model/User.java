@@ -21,10 +21,12 @@ public class User {
 //		this.phoneNo = phoneNo;
 //		this.address = address;
 //	}
+//	
 	
-//	public void setId(int id) {
-//		this.id = ++idCount;
-//	}
+	public void setId()
+	{
+		this.id = ++idCount;
+	}
 	public int getId() {
 		return id;
 	}

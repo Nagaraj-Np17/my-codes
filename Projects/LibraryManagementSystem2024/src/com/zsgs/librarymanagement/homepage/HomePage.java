@@ -21,18 +21,14 @@ private static HomePage homePage;
 	public void init() {
 		
 		while (true) {
-			System.err.println(
+			System.out.println(
 				    "+----------------------------------+\n" +
 				    "|---------  Main Menu  ------------|\n" +
 				    "|                                  |\n" +
 				    "| 1. Book Management               |\n" +
 				    "| 2. User Management               |\n" +
-				    "| 3. Logout                        |\n" +
-				    "| 4. Issue Book                    |\n" +
-				    "| 5. Issued Book                   |\n" +
-				    "| 6. Return Book                   |\n" +
-				    "| 7. Returned Book                 |\n" +
-				    "| 8. ViewUserIssuedBook            |\n" +
+				    "| 3. Issue Management              |\n" +
+				    "| 4. Logout                        |\n" +
 				    "| 0. Exit                          |\n" +
 				    "|					                |\n" +
 				    "+----------------------------------+"
@@ -42,26 +38,17 @@ private static HomePage homePage;
 			switch (choice) {
 			case 1:
 				bookManagement();
-				//new ManageBookView().initAdd();
 				break;
 			case 2:
 				userManagement() ;
 				break;
 			case 3:
+				issueManagement();
+				break;
+			
+			case 8:	
 				new LoginView().init();
 				return; 
-			case 4:
-				new  IssueBookView().init();
-				break; 
-			case 5:
-				new  IssueBookView().viewIssuedBook();
-				break; 
-			case 6:
-				new  IssueBookView().returnBook();
-				break; 
-			case 7:
-				new  IssueBookView().viewUserIssuedBook();
-				break; 
 			case 0:
 				System.out.println("\n-- Thanks for using " + LibraryManagement2024.getInstance().getAppName() + "---");
 				System.exit(0);
@@ -77,11 +64,19 @@ private static HomePage homePage;
 	public void bookManagement() {
 		
 		while (true) {
-			System.err.println("\n|------ Sub Menu ------|\n");
-			System.out.println
-			("\n1.Add Book\n 2.View all Book\n3.View Specific Book\n4.Search Book By Name\n5.Update Book Count "
-					+ "\n6.Remove Book\n7.Return to Main Menu\nEnter The Your Choice:");
-			int choice=sc.nextInt();
+			System.out.println("\n+---------------------- Sub Menu ----------------------+\n" +
+	                   "|                                                      |\n" +
+	                   "|  1. Add Book                                         |\n" +
+	                   "|  2. View all Book                                    |\n" +
+	                   "|  3. View Specific Book                               |\n" +
+	                   "|  4. Search Book By Name                              |\n" +
+	                   "|  5. Update Book Count                                |\n" +
+	                   "|  6. Remove Book                                      |\n" +
+	                   "|  7. Return to Main Menu                              |\n" +
+	                   "|                                                      |\n" +
+	                   "+------------------------------------------------------+");
+			System.out.println("Enter The Your Choice:");
+			int choice = sc.nextInt();
 			switch (choice) {
 			case 1:
 				new ManageBookView().initAdd();
@@ -118,9 +113,15 @@ private static HomePage homePage;
 	
 	public void userManagement() {
 		while (true) {
-			System.err.println("\n|------User Management------|\n");
-			System.out.println
-			("\n1.Add User\n 2.View all User\n3.viewUserIssuedBook\n4.Remove User\n5.Return To Main Menu\nEnter The Your Choice:");
+			System.out.println("\n+---------------------- User Management ----------------------+\n" +
+	                   "|                                                              |\n" +
+	                   "|  1. Add User                                                 |\n" +
+	                   "|  2. View all User                                            |\n" +
+	                   "|  3. View User Issued Book                                    |\n" +
+	                   "|  4. Remove User                                              |\n" +
+	                   "|  5. Return To Main Menu                                      |\n" +
+	                   "|                                                              |\n" +
+	                   "+--------------------------------------------------------------|\n+");
 			int choice=sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -137,10 +138,44 @@ private static HomePage homePage;
 				break;
 			case 5:
 				init();
-			default:{
+				break;
+			default:
+				System.out.println("Invalid Choice:");
+			
+		}
+	}
+	
+	}
+	public void issueManagement() {
+		while (true) {
+			System.out.println("\n+---------------------- Issue Management ----------------------+\n" +
+	                   "|                                                              |\n" +
+	                   "|  1. Issue Book                                               |\n" +
+	                   "|  2. View all Issue Book                                      |\n" +
+	                   "|  3. View User Issued Book                                    |\n" +
+	                   "|  4. Return  Book                                             |\n" +	                  
+	                   "|  0. Return To Main Menu                                      |\n" +
+	                   "|                                                              |\n" +
+	                   "+--------------------------------------------------------------|\n+");
+			int choice=sc.nextInt();
+			switch (choice) {
+			case 1:
+				new IssueBookView().init();
+				break;
+			case 2:
+				new IssueBookView().viewIssuedBook();
+				break;
+			case 3:
+				new IssueBookView().viewUserIssuedBook();
+				break;
+			case 4:
+				new IssueBookView().returnBook();
+				break;
+			case 0:
+				init();
+			default:
 				System.out.println("Invalid Choice:");
 			}
 		}
 	}
-	
 }

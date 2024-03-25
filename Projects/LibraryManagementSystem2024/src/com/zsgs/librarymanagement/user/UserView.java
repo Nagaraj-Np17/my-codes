@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.zsgs.librarymanagement.issuebook.IssueBookModel;
 import com.zsgs.librarymanagement.model.Book;
 import com.zsgs.librarymanagement.model.User;
+import com.zsgs.librarymanagement.validator.Validator;
 
 public class UserView {
 	Scanner sc=new Scanner(System.in);
@@ -17,14 +18,29 @@ public class UserView {
 
 	public void init() {
 		User user=new User();
-		System.out.println("Enter The User Name");
-		user.setName(sc.next());
-		System.out.println("Enter The EmailId Of User");
-		user.setEmailId(sc.next());
-		System.out.println("Enter The User PhoneNo");
-		user.setPhoneNo(sc.next());
+		String name;
+		System.out.println("\n\nEnter User details:");
+		do {
+			System.out.println("\nEnter User name:");
+			name = sc.nextLine();
+		}while(!Validator.validateName(name));
+		user.setName(name);
+		String phoneNo;
+		do {
+		System.out.println("\nEnter User PhoneNo:");
+		phoneNo=sc.next();
+		}while(!Validator.validatePhoneNo(phoneNo));
+	
+		user.setPhoneNo(phoneNo);
+		String mail;
+		do {
+			System.out.println("\nEnter User Email:");;
+			mail=sc.next();
+			}while(!Validator.validateEmail(mail));
+		user.setEmailId(mail);
 		System.out.println("Enter The User Address");
-		user.setAddress(sc.next());		
+		user.setAddress(sc.next());	
+		user.setId();
 		userModel.addUser(user);
 		System.out.println();
 		

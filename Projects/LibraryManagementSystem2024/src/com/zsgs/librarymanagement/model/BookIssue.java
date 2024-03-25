@@ -13,6 +13,7 @@ public class BookIssue {
 		super();
 		this.issueId = issueCount++;
 		this.bookId = bookId;
+		this.userId = userId;
 		this.issueDate = new Date();
 		this.returnDate = null;
 	}

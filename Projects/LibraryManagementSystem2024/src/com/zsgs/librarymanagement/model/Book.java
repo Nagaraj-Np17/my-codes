@@ -1,7 +1,10 @@
 package com.zsgs.librarymanagement.model;
 
+import com.zsgs.librarymanagement.datalayer.LibraryDatabase;
+
 public class Book {
 	private String name;
+	private int count= LibraryDatabase.getInstance().getAllBooksData().size()+1;
 	private int id;
 	private String author;
 	private String publication;
@@ -22,8 +25,8 @@ public class Book {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId() {
+		this.id = count++;
 	}
 
 	public String getAuthor() {

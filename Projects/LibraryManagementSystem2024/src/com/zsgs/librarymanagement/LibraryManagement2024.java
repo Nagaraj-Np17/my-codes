@@ -1,5 +1,6 @@
 package com.zsgs.librarymanagement;
 
+import com.zsgs.librarymanagement.datalayer.LibraryDatabase;
 import com.zsgs.librarymanagement.login.LoginView;
 
 public class LibraryManagement2024 {
@@ -40,7 +41,7 @@ public class LibraryManagement2024 {
 	
 	public static void main(String arg[]) {
 		
-	
+		LibraryDatabase.getInstance().getFromDB();
 		LibraryManagement2024.getInstance().create();
 	}
 }
