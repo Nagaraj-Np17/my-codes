@@ -1,11 +1,14 @@
 package com.zsgs.librarymanagement.model;
 
+import com.zsgs.librarymanagement.datalayer.LibraryDatabase;
+
 public class Admin {
 	private String name;
 	private int id;
 	private String phoneNo;
 	private String emailId;
 	private String address;
+	
 	public String getName() {
 		return name;
 	}
@@ -45,4 +48,10 @@ public class Admin {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	
+    
+
+    
+
 }

@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 //import com.zsgs.librarymanagement.managebook.ManageBookView;
 import com.zsgs.librarymanagement.model.Book;
 import com.zsgs.librarymanagement.model.BookIssue;
+import com.zsgs.librarymanagement.model.Credentials;
 import com.zsgs.librarymanagement.model.Library;
 import com.zsgs.librarymanagement.model.User;
 import com.zsgs.librarymanagement.serialize.JsonSerialize;
@@ -15,6 +16,7 @@ import com.zsgs.librarymanagement.serialize.JsonSerialize;
 public class LibraryDatabase {
 private static  LibraryDatabase  libraryDatabase;
 private Library library;
+private Credentials credentials;
 private List<Book> bookList = new ArrayList<>();
 private List<User> userList = new ArrayList<>();
 private List<BookIssue> issueList = new ArrayList<>();
@@ -219,4 +221,5 @@ private List<BookIssue> issueList = new ArrayList<>();
 	 public void getFromDB() {
 		 deserializeBookList();deserializeUserList();deserializeIssueList();
 	 }
+	
 }

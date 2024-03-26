@@ -45,8 +45,7 @@ private static HomePage homePage;
 			case 3:
 				issueManagement();
 				break;
-			
-			case 8:	
+			case 4:	
 				new LoginView().init();
 				return; 
 			case 0:

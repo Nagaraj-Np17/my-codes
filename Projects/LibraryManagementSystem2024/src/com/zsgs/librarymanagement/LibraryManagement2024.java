@@ -4,7 +4,6 @@ import com.zsgs.librarymanagement.datalayer.LibraryDatabase;
 import com.zsgs.librarymanagement.login.LoginView;
 
 public class LibraryManagement2024 {
-
 	
 	private static  LibraryManagement2024 libraryManagement;
 	

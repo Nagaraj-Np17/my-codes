@@ -28,7 +28,7 @@ public class LoginView {
 	}
 
 	public void onSuccess() {
-		System.out.println("Succes");
+		System.out.println("Success");
 
 	}
 

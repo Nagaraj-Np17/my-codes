@@ -82,7 +82,7 @@ public class IssueBookModel {
 			}		
 		}else {
 			issueBookView.showAlert("User Doesn't Take Any Book");
-			
+			return;
 		}
 	}
 
