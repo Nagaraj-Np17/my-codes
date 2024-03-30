@@ -1,10 +1,11 @@
-package interfacepackages;
+package interfacepackages.sort;
 
 public class QuickSort  implements Sortable{
 
 	@Override
 	public void sort(int[] arr) {
 	quickSort(arr,0,arr.length-1);
+	   System.out.println("QuickSort");
 		for(int i:arr) {
 			System.out.print(i);
 		}
