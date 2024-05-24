@@ -12,7 +12,7 @@ public class Question3 {
 		int i = -1;
 		int j = -1;
 		int number = 1;
-		while (left < right && top < bot) {
+		while (number <= n * n) {
 			i++;
 			j++;
 			while (j < right) {
@@ -28,10 +28,12 @@ public class Question3 {
 			}
 			bot--;
 			i--;
+			j--;
 			while (j >= left) {
 				arr[i][j] = number++;
 				j--;
 			}
+			i--;
 			j++;
 			left++;
 			while (i > top) {
