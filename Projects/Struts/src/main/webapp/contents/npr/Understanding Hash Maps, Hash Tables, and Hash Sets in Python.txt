@@ -1,0 +1,9 @@
+Personally, I found hash maps, hash tables, and hashsets difficult to grasp and apply in code at first. So if you don’t understand it or find it complicated, that’s quite normal, and I’ll do my best to explain it and provide sample problems and code for you to practice with!
+
+First, what exactly is a hash function?
+Consider the following scenario: you work as a cashier, and someone comes to you asking for the price of an apple, and the prices of the things are kept in a book📕. Assuming they are alphabetically organized, you would have to look for the letter and search through all the words to find it. And, as some might know, that is O(n) time. What if I told you that we can utilize anything and make it constant time O(1), so that you can say “apple” and it will tell you exactly where its pricing is! That is where Hash functions come in.
+
+A hash function is a function that accepts a string and returns a number. Each string, however, has its own number, so if apple is 5 and you call apple again, it should remain 5, otherwise there is a problem. In the best-case scenario, each string should correspond to a separate integer. So, with hashing, your apple has a number called “hash code,” and you call that number when you want an apple. Sometimes two objects with the same value have a collision, which I would recommend looking up and learning about (Google is a developer’s best friend, so get used to it!!).
+As a result, hashing is quite useful for discovering and retrieving information!
+
+“Hashing is a technique used in computer science to efficiently store and retrieve data. It involves converting data (such as strings or numbers) into fixed-size values called hash codes. These hash codes are used as indexes to store the data in data structures like hash maps, hash tables, and hash sets.”

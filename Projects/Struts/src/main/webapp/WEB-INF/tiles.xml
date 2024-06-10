@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>  
+     
+   <definition name="articles" template="/articles.jsp"></definition>
+<!--    <definition name="arti" template="/arti.jsp"></definition>  
+    <definition name="art" template="/art.jsp"></definition>  
+    -->
+   
+ <!--   <definition name="login-success" template="/layoutmanager.jsp">   
+   		<put-attribute name="title" value="Welcome Page"/>   
+   		<put-attribute name="body" value="/login-success.jsp"/>   
+   </definition>   -->
+   
+</tiles-definitions>

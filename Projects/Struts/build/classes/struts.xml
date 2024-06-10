@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" 
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="basicstruts2" extends="struts-default">
+		<action name="login" class="com.actions.LoginPageAction">
+			<result name="success" type="redirect">/fetch</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="fetch" class="com.actions.ArticleAction"
+			method="fetchArticles">
+			<result name="success">/Home.jsp</result>
+			<result name="dologin">/index.jsp</result>
+		</action>
+		<action name="signup" class="com.actions.SignUpPageAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="retry" class="com.actions.ErrorPageAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="signupCompleted"
+			class="com.actions.SignUpPageAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="articleupdate" class="com.actions.ArticleAction">
+			<result name="success" type="redirect">/fetch</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="write">
+		<result>/articles.jsp</result>
+
+		</action>
+	</package>
+
+</struts> 
